@@ -1,0 +1,60 @@
+<h2>注文履歴詳細</h2>
+
+<div class="col-xs-6">
+  <div class="form-group row">
+<h4>購入者</h4>
+ <div></div>
+  </div>
+
+  <div class="form-group row">
+    <h4>注文日</h4>
+    <div></div>
+  </div>
+
+  <div class="form-group row">
+   <h4>配送先</h4>
+   <div><%= @item.genre.name %></div>
+  </div>
+
+  <div class="form-group row">
+   <h4>支払方法</h4>
+   <div><%= @item.genre.name %></div>
+  </div>
+
+  <div class="form-group row">
+   <h4>注文ステータス</h4>
+   <div></div>
+   <div></div>
+  </div>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>製作ステータス</th>
+    </thead>
+    <tbody>
+      <% @order_items.each do |oreder_item| %>
+      <tr>
+        <td></td>
+        <td><%= order_item.amount %></td>
+        <td><%= order_item.price %></td>
+        <td>
+        <%= f.collection_select :making_status,["着手不可","製作待ち","製作中","政策完了"] %>
+        </td>
+        <td><%= f.submit "更新", class: "btn btn-success" %></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+   <div class="total">
+       <h4>商品合計 <%= @order.total_payment %>円</h4>
+       <h4>送料 <%= @order.shipping_cost %>円</h4>
+       <h4>請求金額合計 <%= (@order.total_payment + @order.shipping_cost) %>円</h4>
+   </div>
+

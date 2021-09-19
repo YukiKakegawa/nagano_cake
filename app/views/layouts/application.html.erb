@@ -10,6 +10,74 @@
   </head>
 
   <body>
+    <header>
+     <nav class="navbar navbar-expand-lg border-bottom border-dark">
+      <ul class="navbar-nav ml-auto">
+        <% if admin_signed_in? %>
+         <li class = "nav-item">
+            <%= link_to "商品一覧", admin_items_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class = "nav-item">
+            <%= link_to "会員一覧", admin_customers_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class = "nav-item">
+            <%= link_to "注文履歴一覧", admin_order_items_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class = "nav-item">
+            <%= link_to "ジャンル一覧", admin_genres_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class = "nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+        <% elsif customer_signed_in? %>
+
+         <li class = "nav-item">
+            <%= link_to "マイページ", customers_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class = "nav-item">
+            <%= link_to "商品一覧", items_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class = "nav-item">
+            <%= link_to "カート", cart_items_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class = "nav-item">
+            <%= link_to "ログアウト", destroy_customer_session_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <% else %>
+
+         <li class="nav-item">
+            <%= link_to "About", home_about_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class="nav-item">
+            <%= link_to "商品一覧", items_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class="nav-item">
+            <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class="nav-item">
+           <%= link_to "ログイン", new_customer_registration_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <% end %>
+      </ul>
+     </nav>
+    </header>
+
     <%= yield %>
+
+     <div class="border-bottom border-dark">
+
   </body>
 </html>

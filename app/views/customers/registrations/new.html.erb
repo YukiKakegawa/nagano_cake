@@ -1,0 +1,60 @@
+<h2>新規会員登録</h2>
+
+<%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
+  <%= render "customers/shared/error_messages", resource: resource %>
+
+<div class="container">
+  <!--<div class ="col-md-11 offset-md-1">-->
+
+  <div class="field row">
+    <%= f.label :last_name, "名前　      （姓）", class: "col-sm-3" %><%= f.text_field :last_name, class: "col-sm-2", autofocus: true, autocomplete: "last_name" %>
+    <%= f.label :first_name, "（名）", class: "col-sm-1 text-right" %><%= f.text_field :first_name, class: "col-sm-2", autofocus: true, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :last_name_kana, "フリガナ　       （セイ）", class: "col-sm-3" %><%= f.text_field :last_name_kana, class: "col-sm-2", autofocus: true, autocomplete: "last_name" %>
+    <%= f.label :first_name_kana, "（メイ）", class: "col-sm-1 text-right" %><%= f.text_field :first_name_kana, class: "col-sm-2", autofocus: true, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :email, "メールアドレス", class: "col-sm-3" %><%= f.text_field :email, class: "col-sm-2", autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :postal_code, "郵便番号（ハイフンなし）", class: "col-sm-3" %><%= f.text_field :postal_code, class: "col-sm-2", autofocus: true, autocomplete: "postal_code" %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :address, "住所", class: "col-sm-3" %><%= f.text_field :address, class: "col-sm-5", autofocus: true, autocomplete: "address" %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :telephone_number, "電話番号（ハイフンなし）", class: "col-sm-3" %><%= f.text_field :telephone_number, class: "col-sm-2", autofocus: true, autocomplete: "telephone_number" %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :encrypted_password,"パスワード" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> 文字以上)</em>
+    <% end %>
+    <%= f.password_field :password, class: "col-sm-2",autocomplete: "password" %>
+  </div>
+
+  <div class="field row">
+    <%= f.label :password_confirmation,"パスワード（確認用）",class: "col-sm-3" %>
+    <%= f.password_field :password_confirmation, class: "col-sm-2", autocomplete: "password_confirmation" %>
+  </div>
+
+  <div class="actions row">
+    <%= f.submit "新規登録", class: "btn btn-success center-block col-sm-2 offset-sm-3" %>
+  </div>
+<% end %>
+
+<h2>すでに登録済みの方</h2>
+<%=link_to "こちら", new_customer_session_path %><span>からログインを行なってください</span>
+
+  </div>
+<!--</div>-->
+
+
+
