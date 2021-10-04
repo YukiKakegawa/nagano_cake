@@ -1,5 +1,5 @@
 <h2>商品新規登録</h2>
-<%= form_with model:@item, url: admin_items_path, local:true do |f| %>
+  <%= form_with model:@item, url: admin_items_path, local:true do |f| %>
 
   <div class="form-group row">
     <%= f.label :image,"商品画像" , class:"col-sm-2 col-form-label" %>
@@ -32,7 +32,7 @@
   <div class="form-group row">
     <%= f.label :price,"税抜価格" , class:"col-sm-2 col-form-label" %>
     <div class="col-sm-2">
-      <%= f.text_field :price, class:"form-control" %><span>円</span>
+      <%= f.text_field :price, class:"form-control" %><p>円</p>
     </div>
   </div>
 

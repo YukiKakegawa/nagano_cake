@@ -4,6 +4,10 @@
 
     <h2>商品一覧</h2>
 
+      <div class="text-right">
+        <%= link_to '＋', new_admin_item_path, class: "btn btn-circle" %>
+      </div>
+
     <table class="table">
      <thead class="thead-light">
         <tr>
@@ -23,10 +27,10 @@
           <td><%= item.genre.name %></td>
           <td>
             <% if item.is_active %>
-              販売中
-              <% else %>
-              販売停止中
-            <% end %>
+              <span class="green">販売中</span>
+            <% else %>
+              <span class="secondary">販売停止中</span>
+          <% end %>
           </td>
         </tr>
 

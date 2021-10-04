@@ -2,13 +2,13 @@
   <p>会員の方はこちらからログイン</p>
 
 <div class ="container">
-<%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
+<%= form_with model: @customer, url: customers_sign_in_path, local: true do |f| %>
   <div class="field row">
-    <%= f.label :email, "メールアドレス", class: "col-sm-3" %><%= f.email_field :email, class: "col-sm-2", autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, "メールアドレス", class: "col-sm-3" %><%= f.email_field :email, class: "col-sm-2 mb-2", autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field row">
-    <%= f.label :password, "パスワード", class: "col-sm-3" %><%= f.password_field :password, class: "col-sm-2", autocomplete: "current-password" %>
+    <%= f.label :password, "パスワード", class: "col-sm-3" %><%= f.password_field :password, class: "col-sm-2 mb-2", autocomplete: "current-password" %>
   </div>
 
   <div class="actions row">
@@ -17,8 +17,7 @@
 <% end %>
 
 <p>会員登録がお済みでない方</p>
-<%=link_to "こちら", new_customer_registration_path %><span>から新規登録を行なってください。</span>
+<%=link_to "こちら", customers_sign_up_path %><span>から新規登録を行なってください。</span>
 
   </div>
-</div>
 

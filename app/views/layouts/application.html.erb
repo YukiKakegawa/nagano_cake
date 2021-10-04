@@ -13,28 +13,9 @@
     <header>
      <nav class="navbar navbar-expand-lg border-bottom border-dark">
       <ul class="navbar-nav ml-auto">
-        <% if admin_signed_in? %>
-         <li class = "nav-item">
-            <%= link_to "商品一覧", admin_items_path, class: 'btn btn-light ml-3' %>
-         </li>
+        <% if customer_signed_in? %>
 
-         <li class = "nav-item">
-            <%= link_to "会員一覧", admin_customers_path, class: 'btn btn-light ml-3' %>
-         </li>
-
-         <li class = "nav-item">
-            <%= link_to "注文履歴一覧", admin_order_items_path, class: 'btn btn-light ml-3' %>
-         </li>
-
-         <li class = "nav-item">
-            <%= link_to "ジャンル一覧", admin_genres_path, class: 'btn btn-light ml-3' %>
-         </li>
-
-         <li class = "nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, class: 'btn btn-light ml-3' %>
-         </li>
-
-        <% elsif customer_signed_in? %>
+         <li>ようこそ、<%= current_customer.last_name %>さん！</li>
 
          <li class = "nav-item">
             <%= link_to "マイページ", customers_path, class: 'btn btn-light ml-3' %>
@@ -49,7 +30,28 @@
          </li>
 
          <li class = "nav-item">
-            <%= link_to "ログアウト", destroy_customer_session_path, class: 'btn btn-light ml-3' %>
+            <%= link_to "ログアウト", customers_sign_out_path, class: 'btn btn-light ml-3',method: :delete %>
+         </li>
+
+        <% elsif admin_signed_in? %>
+         <li class = "nav-item">
+            <%= link_to "商品一覧", admin_items_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class = "nav-item">
+            <%= link_to "会員一覧", admin_customers_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class = "nav-item">
+            <%= link_to "注文履歴一覧", admin_orders_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class = "nav-item">
+            <%= link_to "ジャンル一覧", admin_genres_path, class: 'btn btn-light ml-3' %>
+         </li>
+
+         <li class = "nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, class: 'btn btn-light ml-3' ,method: :delete %>
          </li>
 
          <% else %>
@@ -63,11 +65,11 @@
          </li>
 
          <li class="nav-item">
-            <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-light ml-3' %>
+            <%= link_to "新規登録", customers_sign_up_path, class: 'btn btn-light ml-3' %>
          </li>
 
          <li class="nav-item">
-           <%= link_to "ログイン", new_customer_registration_path, class: 'btn btn-light ml-3' %>
+           <%= link_to "ログイン", customers_sign_in_path, class: 'btn btn-light ml-3' %>
          </li>
 
          <% end %>
@@ -76,8 +78,8 @@
     </header>
 
     <%= yield %>
-
-     <div class="border-bottom border-dark">
-
   </body>
+  <footer>
+     <div class="border-bottom border-dark ml-auto">
+  </footer>
 </html>
